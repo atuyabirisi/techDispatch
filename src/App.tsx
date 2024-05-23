@@ -1,3 +1,12 @@
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import HomepageLayout from "./pages/home/HomePageLayout";
+
 export default function App() {
-  return <h1>Blog Application</h1>;
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomepageLayout />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
