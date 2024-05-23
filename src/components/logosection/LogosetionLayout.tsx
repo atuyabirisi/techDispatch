@@ -4,7 +4,7 @@ import SearchInput from "./SearchInput";
 
 export default function LogosectionLayout() {
   return (
-    <div className="row py-5 border-bottom">
+    <div className="row py-5">
       <div className="col-lg-4 ">
         <SearchInput />
       </div>
