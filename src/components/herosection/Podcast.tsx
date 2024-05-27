@@ -1,8 +1,11 @@
+import { BsHeadphones } from "react-icons/bs";
+
 export default function Podcast() {
   return (
     <>
-      <div className="d-flex align-items-center mb-3 gap-3 py-1">
-        <div className="d-flex align-items-center">Podcast episodes</div>
+      <div className="mb-3 py-1 d-flex gap-3 align-items-center">
+        <BsHeadphones />
+        <small>Podcast episodes</small>
       </div>
       <div>
         <h3>

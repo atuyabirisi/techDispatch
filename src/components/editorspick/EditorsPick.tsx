@@ -1,3 +1,5 @@
+import { FiChevronsRight } from "react-icons/fi";
+
 export default function EditorPick() {
   return (
     <div className="p-2 my-3">
@@ -8,7 +10,9 @@ export default function EditorPick() {
             <div className="d-flex align-items-center fs-5">
               <strong>View all</strong>
             </div>
-            <div className="d-flex align-items-center fs-5"></div>
+            <div className="d-flex align-items-center fs-5">
+              <FiChevronsRight />
+            </div>
           </div>
         </a>
       </div>

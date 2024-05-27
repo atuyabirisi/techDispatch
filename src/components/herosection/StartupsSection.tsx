@@ -1,7 +1,7 @@
 export default function StartupsSection() {
   return (
     <>
-      <div className="card mt-5 border-bottom-0">
+      <div className="card mt-5 border-bottom-0" style={{ overflow: "hidden" }}>
         <img src="src\assets\blog.jpg" alt="techDispatch_headquaters" />
         <div className="card-body">
           <div className="py-2 d-flex justify-content-between border-bottom">

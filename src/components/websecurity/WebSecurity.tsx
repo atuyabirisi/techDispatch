@@ -1,3 +1,5 @@
+import { FiChevronsRight } from "react-icons/fi";
+
 export default function WebSecurity() {
   return (
     <div className="px-2 py-4 border-top border-bottom">
@@ -8,7 +10,9 @@ export default function WebSecurity() {
             <div className="d-flex align-items-center fs-5">
               <strong>View all</strong>
             </div>
-            <div className="d-flex align-items-center fs-5"></div>
+            <div className="d-flex align-items-center fs-5">
+              <FiChevronsRight />
+            </div>
           </div>
         </a>
       </div>

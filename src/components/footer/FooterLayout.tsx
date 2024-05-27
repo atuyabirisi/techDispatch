@@ -1,4 +1,4 @@
-import FooterBanner from "./FooterBanner";
+import BottomFooter from "./BottomFooter";
 import FooterLogo from "./FooterLogo";
 import FooterMenu from "./FooterMenu";
 import SocialMedia from "./SocialMedia";
@@ -9,7 +9,7 @@ export default function FooterLayout() {
       <FooterLogo />
       <SocialMedia />
       <FooterMenu />
-      <FooterBanner />
+      <BottomFooter />
     </div>
   );
 }

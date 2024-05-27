@@ -1,7 +1,7 @@
 export default function LatestNews() {
   return (
     <>
-      <div className="card border-0">
+      <div className="card border-0" style={{ overflow: "hidden" }}>
         <img src="src\assets\news.jpg" alt="bitcoin" />
         <div className="card-body">
           <div className="d-flex justify-content-between my-1 border-bottom py-1">
