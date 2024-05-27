@@ -2,7 +2,7 @@ import { FiChevronsRight } from "react-icons/fi";
 
 export default function EditorPick() {
   return (
-    <div className="p-2 my-3">
+    <div className="py-2 my-3">
       <div className="d-flex justify-content-between">
         <h3>Editor's Pick</h3>
         <a href="#" className="link-danger text-decoration-none">
@@ -17,9 +17,9 @@ export default function EditorPick() {
         </a>
       </div>
       <div className="row my-3">
-        <div className="col-md-6 col-lg-4">
+        <div className="col-lg-4">
           <div className="row">
-            <div className="col-md-2 d-flex justify-content-start">
+            <div className="col-md-1 col-lg-2 d-flex justify-content-start">
               <h1>1.</h1>
             </div>
             <div className="col-md-10">
@@ -46,9 +46,9 @@ export default function EditorPick() {
             </div>
           </div>
         </div>
-        <div className="col-md-6 col-lg-4">
+        <div className="col-lg-4">
           <div className="row">
-            <div className="col-md-2 d-flex justify-content-start">
+            <div className="col-md-1 col-lg-2 d-flex justify-content-start">
               <h1>2.</h1>
             </div>
             <div className="col-md-10">
@@ -75,9 +75,9 @@ export default function EditorPick() {
             </div>
           </div>
         </div>
-        <div className="col-md-6 col-lg-4">
+        <div className="col-lg-4">
           <div className="row">
-            <div className="col-md-2 d-flex justify-content-start">
+            <div className="col-md-1 col-lg-2 d-flex justify-content-start">
               <h1>3.</h1>
             </div>
             <div className="col-md-10">

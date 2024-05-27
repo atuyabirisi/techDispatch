@@ -2,7 +2,7 @@ import { FiChevronsRight } from "react-icons/fi";
 
 export default function WebSecurity() {
   return (
-    <div className="px-2 py-4 border-top border-bottom">
+    <div className="px-lg-2 py-4 border-top border-bottom">
       <div className="d-flex justify-content-between">
         <h3>Trends in web security</h3>
         <a href="#" className="link-danger text-decoration-none">

@@ -8,7 +8,7 @@ import WebSecurity from "../../components/websecurity/WebSecurity";
 
 export default function HomepageLayout() {
   return (
-    <div className="mx-3">
+    <div className="mx-1 mx-md-2">
       <LogosectionLayout />
       <MenuItems />
       <HerosectionLayout />

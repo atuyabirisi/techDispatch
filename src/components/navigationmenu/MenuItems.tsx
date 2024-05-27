@@ -1,6 +1,6 @@
 export default function MenuItems() {
   return (
-    <div className="py-2 border-top border-bottom">
+    <div className="d-none d-md-flex justify-content-center py-2 border-bottom">
       <div className="py-4 my-1 d-flex gap-5 justify-content-center">
         <a href="#" className="link-dark text-decoration-none border-bottom">
           <h5>HOME</h5>

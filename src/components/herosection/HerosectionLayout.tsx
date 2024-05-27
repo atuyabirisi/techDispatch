@@ -6,7 +6,7 @@ import StartupsSectionLayout from "./StartupsSection";
 export default function HerosectionLayout() {
   return (
     <div className="row">
-      <div className="col-lg-4">
+      <div className="col-lg-4 pt-3">
         <LatestNewSectionLayout />
       </div>
       <div className="col-lg-4">

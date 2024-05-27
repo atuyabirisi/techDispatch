@@ -1,6 +1,6 @@
 export default function SearchInput() {
   return (
-    <div className="h-100 d-flex align-items-center justify-content-center">
+    <div className="w-100 d-flex align-items-center justify-content-center">
       <form action="#">
         <input
           type="text"
