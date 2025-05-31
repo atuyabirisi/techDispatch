@@ -1,3 +1,4 @@
+import HeroLayout from "../layouts/HeroLayout";
 import MenubarLayout from "../layouts/MenubarLayout";
 import NavbarLayout from "../layouts/NavbarLayout";
 
@@ -6,6 +7,7 @@ export default function HomePage() {
     <main className="mx-1">
       <NavbarLayout />
       <MenubarLayout />
+      <HeroLayout />
     </main>
   );
 }
