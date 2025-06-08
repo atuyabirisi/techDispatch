@@ -1,13 +1,15 @@
+import PipelinesStories from "../devOpsSection/PipelinesStories";
 import HeroLayout from "../layouts/HeroLayout";
 import MenubarLayout from "../layouts/MenubarLayout";
 import NavbarLayout from "../layouts/NavbarLayout";
 
 export default function HomePage() {
   return (
-    <main className="mx-1">
+    <main className="mx-1 overflow-hidden">
       <NavbarLayout />
       <MenubarLayout />
       <HeroLayout />
+      <PipelinesStories />
     </main>
   );
 }
