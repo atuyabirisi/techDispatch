@@ -1,9 +1,10 @@
-import PipelinesStories from "../pipelinesSection/PipelinesStories";
+import PipelinesStories from "../components/pipelinesSection/PipelinesStories";
 import HeroLayout from "../layouts/HeroLayout";
 import MenubarLayout from "../layouts/MenubarLayout";
 import NavbarLayout from "../layouts/NavbarLayout";
-import CloudNativeInfrastructure from "../cloudNativeSection/CloudNativeInfrastructure";
+import CloudNativeInfrastructure from "../components/cloudNativeSection/CloudNativeInfrastructure";
 import SubscribeLayout from "../layouts/SubscribeLayout";
+import FooterLayout from "../layouts/FooterLayout";
 
 export default function HomePage() {
   return (
@@ -14,6 +15,7 @@ export default function HomePage() {
       <PipelinesStories />
       <CloudNativeInfrastructure />
       <SubscribeLayout />
+      <FooterLayout />
     </main>
   );
 }
