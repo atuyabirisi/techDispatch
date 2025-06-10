@@ -9,3 +9,9 @@ export type Post  = {
     updatedAt: Date,
     article: string,
 }
+
+export type CloudNativeStory = {
+  articleId: Post;
+  createdAt: Date;
+  updatedAt: string;
+}

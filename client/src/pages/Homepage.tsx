@@ -1,7 +1,8 @@
-import PipelinesStories from "../devOpsSection/PipelinesStories";
+import PipelinesStories from "../pipelinesSection/PipelinesStories";
 import HeroLayout from "../layouts/HeroLayout";
 import MenubarLayout from "../layouts/MenubarLayout";
 import NavbarLayout from "../layouts/NavbarLayout";
+import CloudNativeInfrastructure from "../cloudNativeSection/CloudNativeInfrastructure";
 
 export default function HomePage() {
   return (
@@ -10,6 +11,7 @@ export default function HomePage() {
       <MenubarLayout />
       <HeroLayout />
       <PipelinesStories />
+      <CloudNativeInfrastructure />
     </main>
   );
 }

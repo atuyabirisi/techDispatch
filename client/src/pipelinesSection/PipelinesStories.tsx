@@ -17,7 +17,7 @@ export default function PipelinesStories() {
 
   return (
     <section className="py-4">
-      <hr className="my-4 mx-1" />
+      <hr className="my-3 mx-1" />
 
       <div className="d-flex justify-content-between align-items-center px-2 mb-3">
         <h4 className="fw-bold m-0">Pipelines & Processes</h4>
@@ -51,7 +51,7 @@ export default function PipelinesStories() {
                     {format(post.createdAt, "MMM d, yyyy")}
                   </small>
                 </div>
-                <h5 className="text-center">
+                <h5>
                   <Link
                     to={`/posts/${post._id}`}
                     className="text-dark text-decoration-none fw-bold"
