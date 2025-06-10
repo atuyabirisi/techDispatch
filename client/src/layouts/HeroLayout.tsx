@@ -1,7 +1,7 @@
-import HeroSectionSubStories from "../herosection/HeroSubStories";
-import HeroPodcast from "../herosection/HeroPodcast";
-import HeroMainStory from "../herosection/HeroMainStory";
-import HeroTrendingList from "../herosection/HeroTrendingList";
+import HeroSectionSubStories from "../components/herosection/HeroSubStories";
+import HeroPodcast from "../components/herosection/HeroPodcast";
+import HeroMainStory from "../components/herosection/HeroMainStory";
+import HeroTrendingList from "../components/herosection/HeroTrendingList";
 
 export default function HeroSectionLayout() {
   return (

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { format } from "date-fns";
 import { Link } from "react-router-dom";
-import type { Post } from "../interfaces/types";
+import type { Post } from "../../interfaces/types";
 
 export default function HeroSubStories() {
   const [subStories, setSubStories] = useState<Post[]>([]);

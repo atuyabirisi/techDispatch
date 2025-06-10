@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import parse from "html-react-parser";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import type { Post } from "../interfaces/types";
+import type { Post } from "../../interfaces/types";
 
 export default function HeroTrendingList() {
   const [trendingPosts, setTrendingPosts] = useState<Post[]>([]);

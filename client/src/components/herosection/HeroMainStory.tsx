@@ -3,7 +3,7 @@ import axios from "axios";
 import { format } from "date-fns";
 import parse from "html-react-parser";
 import { Link } from "react-router-dom";
-import type { Post } from "../interfaces/types";
+import type { Post } from "../../interfaces/types";
 
 export default function HeroMainStory() {
   const [mainStory, setMainStory] = useState<Post | null>(null);

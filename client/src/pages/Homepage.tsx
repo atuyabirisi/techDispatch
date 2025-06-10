@@ -3,6 +3,7 @@ import HeroLayout from "../layouts/HeroLayout";
 import MenubarLayout from "../layouts/MenubarLayout";
 import NavbarLayout from "../layouts/NavbarLayout";
 import CloudNativeInfrastructure from "../cloudNativeSection/CloudNativeInfrastructure";
+import SubscribeLayout from "../layouts/SubscribeLayout";
 
 export default function HomePage() {
   return (
@@ -12,6 +13,7 @@ export default function HomePage() {
       <HeroLayout />
       <PipelinesStories />
       <CloudNativeInfrastructure />
+      <SubscribeLayout />
     </main>
   );
 }
