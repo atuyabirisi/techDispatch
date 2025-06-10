@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import type { CloudNativeStory } from "../interfaces/types";
+import type { CloudNativeStory } from "../../interfaces/types";
 
 const API_URL = "http://localhost:5000/api/editorspick";
 

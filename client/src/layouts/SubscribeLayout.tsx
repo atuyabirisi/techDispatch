@@ -1,4 +1,4 @@
-import SubscribeForm from "../subscribeSection/SubscribeForm";
+import SubscribeForm from "../components/subscribeSection/SubscribeForm";
 
 export default function SubscribeLayout() {
   return (

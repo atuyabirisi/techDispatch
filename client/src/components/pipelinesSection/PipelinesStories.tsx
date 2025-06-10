@@ -3,7 +3,7 @@ import { FiChevronsRight } from "react-icons/fi";
 import axios from "axios";
 import { format } from "date-fns";
 import { Link } from "react-router-dom";
-import type { Post } from "../interfaces/types";
+import type { Post } from "../../interfaces/types";
 
 export default function PipelinesStories() {
   const [pipelinePosts, setPipelinePosts] = useState<Post[]>([]);
