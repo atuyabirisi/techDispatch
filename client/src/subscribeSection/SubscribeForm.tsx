@@ -33,7 +33,7 @@ export default function SubscribeForm() {
       <div className="card rounded shadow-sm border-0">
         <div className="row g-0">
           <div className="col-12 col-md-6 d-flex flex-column align-items-center justify-content-center p-4">
-            <h4 className="card-title mb-3 text-center">
+            <h4 className="card-title mb-3 text-center fw-bold">
               Subscribe to Our Newsletter
             </h4>
             <p className="card-text text-muted text-center">
