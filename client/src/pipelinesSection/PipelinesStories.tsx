@@ -54,7 +54,7 @@ export default function PipelinesStories() {
                 <h5>
                   <Link
                     to={`/posts/${post._id}`}
-                    className="text-dark text-decoration-none fw-bold"
+                    className="text-dark text-decoration-none"
                   >
                     {post.tittle}
                   </Link>

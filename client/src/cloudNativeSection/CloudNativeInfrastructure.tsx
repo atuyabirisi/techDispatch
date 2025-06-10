@@ -52,7 +52,7 @@ export default function CloudNativeInfrastructure() {
                 <h5>
                   <a
                     href={`/posts/${story.articleId._id}`}
-                    className="link-dark text-decoration-none fw-bold"
+                    className="link-dark text-decoration-none"
                   >
                     {story.articleId.tittle}
                   </a>
