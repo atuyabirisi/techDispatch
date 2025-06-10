@@ -29,7 +29,7 @@ export default function SubscribeForm() {
   };
 
   return (
-    <div className="container my-4">
+    <div className="container my-5">
       <div className="card rounded shadow-sm border-0">
         <div className="row g-0">
           <div className="col-12 col-md-6 d-flex flex-column align-items-center justify-content-center p-4">
@@ -42,7 +42,7 @@ export default function SubscribeForm() {
             </p>
           </div>
 
-          <div className="col-12 col-md-6 p-4">
+          <div className="col-md-6 p-4">
             <form onSubmit={handleSubmit}>
               <div className="mb-3">
                 <input
@@ -57,7 +57,7 @@ export default function SubscribeForm() {
               <div className="d-grid">
                 <button
                   type="submit"
-                  className="btn btn-primary"
+                  className="btn btn-danger"
                   disabled={status === "loading"}
                 >
                   {status === "loading" ? "Subscribing..." : "Subscribe"}
