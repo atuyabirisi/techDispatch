@@ -1,9 +1,10 @@
+
 *{
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     overflow-x: hidden;
 }
 .subscribe {
-    background-image: url("C:\Users\LATITUDE 3189 TOUCH\Desktop\techBlog\client\src\assets\andrew-neel-cckf4TsHAuw-unsplash.jpg");
+    background-image: url("../public/assets/subscribeBackground.jpg");
     background-size: cover;
     background-position: center;
 }
