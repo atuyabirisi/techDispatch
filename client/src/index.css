@@ -7,3 +7,20 @@
     background-size: cover;
     background-position: center;
 }
+
+.responsive-title {
+    font-size: 16px; 
+  }
+  
+  @media (min-width: 768px) {
+    .responsive-title {
+      font-size: 20px; 
+    }
+  }
+  
+  @media (min-width: 992px) {
+    .responsive-title {
+      font-size: 21px; 
+    }
+  }
+  
