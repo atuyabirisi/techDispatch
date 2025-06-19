@@ -1,0 +1,27 @@
+name: Initialize Branch
+
+on:
+  workflow_dispatch:
+    inputs:
+      branchName:
+        description: "Name for the branch"
+        required: false
+        default: "new feature"
+
+jobs:
+  create-branch:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/Checkout@v4
+
+      - name: Set up Git
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+
+      - name: Create and push new branch
+        run: |
+          branch_name="api/${{ github.events.inputs.branchName }}"
+          git switch -C "$branch_name"
