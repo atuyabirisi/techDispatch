@@ -27,3 +27,8 @@ export type BlogCommentsProps = {
   articleId: string,
   username: string | undefined,
 }
+
+//MODAL STATE TYPES
+export type AuthModalState = {
+  isOpen: boolean
+}
