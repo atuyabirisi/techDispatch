@@ -22,6 +22,9 @@ jobs:
           git config user.email "github-actions@users.noreply.github.com"
 
       - name: Create and push new branch
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          branch_name="api/${{ github.event.inputs.branchName }}"
-          git switch -C "$branch_name"
+          branch_name="${{ github.event.inputs.branchName }}"
+          git branch "$branch_name" 
+          git push https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository}} "$branch_name"
