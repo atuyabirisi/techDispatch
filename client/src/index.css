@@ -1,27 +1,25 @@
-
-*{
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    overflow-x: hidden;
+* {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  overflow-x: hidden;
 }
 .subscribe {
-    background-image: url("../public/assets/subscribeBackground.jpg");
-    background-size: cover;
-    background-position: center;
+  background-image: url("../public/assets/subscribeBackground.jpg");
+  background-size: cover;
+  background-position: center;
 }
 
 .responsive-title {
-    font-size: 16px; 
+  font-size: 16px;
+}
+
+@media (min-width: 768px) {
+  .responsive-title {
+    font-size: 20px;
   }
-  
-  @media (min-width: 768px) {
-    .responsive-title {
-      font-size: 20px; 
-    }
+}
+
+@media (min-width: 992px) {
+  .responsive-title {
+    font-size: 21px;
   }
-  
-  @media (min-width: 992px) {
-    .responsive-title {
-      font-size: 21px; 
-    }
-  }
-  
+}
