@@ -1,0 +1,14 @@
+.contentEditable {
+  min-height: 60vh;
+  padding: 10px;
+}
+
+.contentEditable:focus {
+  outline: none;
+}
+
+.editorPlaceHolder {
+  position: absolute;
+  top: 80px;
+  left: 25px;
+}
