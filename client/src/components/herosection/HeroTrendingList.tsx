@@ -1,27 +1,27 @@
 import { format } from "date-fns";
 import { useEffect, useState } from "react";
-import parse from "html-react-parser";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import type { Post } from "../../interfaces/types";
+import giveFirstFortyWords from "../../utilities/giveFirstFortyWords";
 
 export default function HeroTrendingList() {
-  const [trendingPosts, setTrendingPosts] = useState<Post[]>([]);
+  const [topPost, setTopPost] = useState<Post[]>([]);
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/trending")
-      .then((res) => setTrendingPosts(res.data))
+      .get("http://localhost:3000/top_pick")
+      .then((res) => setTopPost(res.data))
       .catch((error) => console.error("Error fetching trending posts:", error));
   }, []);
 
   return (
     <div>
-      {trendingPosts.map((post, index) => (
+      {topPost.map((post, index) => (
         <div className="card border-0 my-4" key={index}>
           <Link to={`/posts/${post._id}`}>
             <img
-              src={`http://localhost:5000/uploads/${post.imgfile}`}
+              src={`http://localhost:3000/uploads/${post.cover}`}
               className="card-img-top"
               alt={post.category}
             />
@@ -31,7 +31,7 @@ export default function HeroTrendingList() {
             <div className="d-flex py-1 my-1 justify-content-between border-bottom">
               <small>
                 <span className="text-danger text-decoration-none">
-                  TRENDING
+                  TOP PICK
                 </span>
               </small>
               <small className="text-dark">
@@ -48,7 +48,7 @@ export default function HeroTrendingList() {
               </Link>
             </div>
 
-            <div>{parse(post.abstract)}</div>
+            <div>{giveFirstFortyWords(post.content)}</div>
           </div>
         </div>
       ))}

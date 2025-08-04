@@ -3,11 +3,11 @@ export type Post = {
   tittle: string;
   abstract: string;
   category: string;
-  imgfile: string;
+  cover: string;
   author: string;
   createdAt: Date;
   updatedAt: Date;
-  article: string;
+  content: string;
 };
 
 export type CloudNativeStory = {

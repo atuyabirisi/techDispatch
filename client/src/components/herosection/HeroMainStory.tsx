@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { format } from "date-fns";
-import parse from "html-react-parser";
 import { Link } from "react-router-dom";
 import type { Post } from "../../interfaces/types";
+import giveFirstFortyWords from "../../utilities/giveFirstFortyWords";
 
 export default function HeroMainStory() {
   const [mainStory, setMainStory] = useState<Post | null>(null);
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/mainherosec")
+      .get("http://localhost:3000/hero_main")
       .then((res) => setMainStory(res.data))
       .catch((error) => console.error("Failed to fetch main story:", error));
   }, []);
@@ -21,7 +21,7 @@ export default function HeroMainStory() {
     <div className="card border-bottom-0">
       <Link to={`/posts/${mainStory._id}`}>
         <img
-          src={`http://localhost:5000/uploads/${mainStory.imgfile}`}
+          src={`http://localhost:3000/uploads/${mainStory.cover}`}
           className="card-img-top"
           alt={mainStory.category}
           style={{ height: "200px", objectFit: "cover" }}
@@ -52,7 +52,7 @@ export default function HeroMainStory() {
           </h5>
         </div>
 
-        <div>{parse(mainStory.abstract)}</div>
+        <div>{giveFirstFortyWords(mainStory.content)}</div>
       </div>
     </div>
   );

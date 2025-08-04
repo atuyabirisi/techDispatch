@@ -9,7 +9,7 @@ export default function HeroSubStories() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/hero-startup")
+      .get("http://localhost:3000/hero_docker")
       .then((res) => setSubStories(res.data))
       .catch((error) => console.error("Failed to fetch sub-stories:", error));
   }, []);
@@ -21,7 +21,7 @@ export default function HeroSubStories() {
           <div className="card mb-3 border-0">
             <Link to={`/posts/${story._id}`}>
               <img
-                src={`http://localhost:5000/uploads/${story.imgfile}`}
+                src={`http://localhost:3000/uploads/${story.cover}`}
                 className="card-img-top"
                 alt={story.category}
                 style={{ height: "200px", objectFit: "cover" }}
