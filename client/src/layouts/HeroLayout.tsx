@@ -8,7 +8,7 @@ export default function HeroSectionLayout() {
     <div className="row mt-2 py-2">
       <div className="col-md-6 col-lg-4">
         <HeroPodcast />
-        <div className="mt-5">
+        <div className="mt-1">
           <HeroTrendingList />
         </div>
       </div>

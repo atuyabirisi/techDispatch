@@ -2,6 +2,7 @@ import { useState, type FormEvent } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import axios from "axios";
 import { signUpSchema } from "../../zodSchemas/authenticationSchema";
 import type { AppDispatch } from "../../app/store";
 import { useDispatch } from "react-redux";
@@ -32,7 +33,11 @@ export default function SignUp() {
     event.preventDefault();
 
     const user = getValues();
-    console.log(user);
+
+    axios
+      .post("http://localhost:3000/auth/signup", user)
+      .then((res) => console.log(res.data))
+      .catch((error) => console.log(error));
   };
 
   return (
@@ -110,7 +115,7 @@ export default function SignUp() {
       </form>
       <div className="mt-3 d-flex justify-content-center">
         <p className="mb-0">
-          Already have an account?{' '}
+          Already have an account?{" "}
           <button
             type="button"
             className="btn btn-link p-0 text-dark fw-bold"
@@ -123,4 +128,3 @@ export default function SignUp() {
     </>
   );
 }
-

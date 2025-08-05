@@ -7,6 +7,8 @@ describe("signin endpoint", () => {
   describe("POST /signin", () => {
     beforeAll(async () => {
       await connectDB();
+
+      await User.deleteMany({});
     });
 
     afterAll(async () => {

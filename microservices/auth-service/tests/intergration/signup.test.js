@@ -22,7 +22,7 @@ describe("Auth service - signup endpoint", () => {
       confirmPassword: "test123",
     });
 
-    expect(response.status).toBe(201);
+    expect(response.data.message).toBe("User successfully registered");
   });
 
   it("should fail if the user is already registered", async () => {

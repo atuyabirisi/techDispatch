@@ -10,7 +10,7 @@ export default function PipelinesStories() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/web-security")
+      .get("http://localhost:3000/cicd")
       .then((res) => setPipelinePosts(res.data))
       .catch((err) => console.error("Failed to fetch pipeline posts:", err));
   }, []);
@@ -20,7 +20,7 @@ export default function PipelinesStories() {
       <hr className="my-3 mx-1" />
 
       <div className="d-flex justify-content-between align-items-center px-2 mb-3">
-        <h4 className="fw-bold m-0">Pipelines & Processes</h4>
+        <h4 className="fw-bold m-0">CI/CD & Pipelines</h4>
         <Link
           to="/category/pipelines"
           className="text-danger text-decoration-none d-flex align-items-center gap-2"
@@ -36,7 +36,7 @@ export default function PipelinesStories() {
             <div className="card border-0 h-100">
               <Link to={`/posts/${post._id}`}>
                 <img
-                  src={`http://localhost:5000/uploads/${post.imgfile}`}
+                  src={`http://localhost:3000/uploads/${post.cover}`}
                   alt={post.tittle}
                   className="card-img-top"
                   style={{ height: "200px", objectFit: "cover" }}

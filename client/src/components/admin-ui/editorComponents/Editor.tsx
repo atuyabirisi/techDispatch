@@ -12,10 +12,19 @@ import { OnChangePlugin } from "@lexical/react/LexicalOnChangePlugin";
 import { $getRoot, type EditorState } from "lexical";
 import axios from "axios";
 
+const categoryArray = [
+  "CI/CD & Pipelines",
+  "Docker & Containerization",
+  "Cloud & Infrastructure (Azure)",
+  "DevOps Practices",
+];
+
 export default function Editor() {
   const [tittle, setTittle] = useState("");
 
   const [file, setFile] = useState<FileList | null>(null);
+
+  const [category, setCategory] = useState("");
 
   const [content, setContent] = useState("");
 
@@ -36,12 +45,14 @@ export default function Editor() {
 
     data.set("tittle", tittle);
 
-    file && data.set("imageFile", file[0]);
+    file && data.set("cover", file[0]);
+
+    data.set("category", category);
 
     data.set("content", content);
 
     axios
-      .post("http://localhost:4000/articles", data)
+      .post("http://localhost:3000/article", data)
       .then((res) => console.log(res.data))
       .catch((error) => console.log(error));
   };
@@ -67,19 +78,40 @@ export default function Editor() {
             ></textarea>
           </div>
           <hr />
-          <div className="mb-2">
-            <label htmlFor="articleImage" className="form-label">
-              Upload Article Picture
-            </label>
-            <input
-              type="file"
-              id="articleImage"
-              name="articleImage"
-              className="form-control"
-              onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                setFile(e.target.files);
-              }}
-            />
+          <div className="mb-2 row">
+            <div className="col-8">
+              <label htmlFor="articleImage" className="form-label">
+                Upload Article Picture
+              </label>
+              <input
+                type="file"
+                id="articleImage"
+                name="articleImage"
+                className="form-control"
+                onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                  setFile(e.target.files);
+                }}
+              />
+            </div>
+            <div className="col-4">
+              <label htmlFor="category" className="form-label">
+                Category
+              </label>
+              <select
+                className="form-control"
+                id="client"
+                onChange={(e: ChangeEvent<HTMLSelectElement>) => {
+                  setCategory(e.target.value);
+                }}
+              >
+                <option value=""></option>
+                {categoryArray.map((category, index) => (
+                  <option key={index} value={category}>
+                    {category}
+                  </option>
+                ))}
+              </select>
+            </div>
           </div>
         </div>
       </div>

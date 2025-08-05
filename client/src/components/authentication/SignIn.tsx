@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
 import { useState, type FormEvent } from "react";
+import axios from "axios";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signInSchema } from "../../zodSchemas/authenticationSchema";
@@ -8,17 +9,20 @@ import { useDispatch } from "react-redux";
 import { openSignUpModal } from "../../slices/signUpModalSlice";
 import { closeSignInModal } from "../../slices/signInModalSlice";
 import OAuth from "./OAuth";
+import { useNavigate } from "react-router-dom";
 
 type SignInFormData = z.infer<typeof signInSchema>;
 
 export default function SignIn() {
+  const navigate = useNavigate();
+
   const dispatch: AppDispatch = useDispatch();
 
   const openSignUp = () => {
     dispatch(closeSignInModal());
     dispatch(openSignUpModal());
   };
-        
+
   const [showPass, setShowPass] = useState(false);
 
   const {
@@ -31,8 +35,14 @@ export default function SignIn() {
 
   const handleSignIn = (event: FormEvent) => {
     event.preventDefault();
-    const user = getValues();
-    console.log(user);
+    const userCredentials = getValues();
+    axios
+      .post("http://localhost:3000/auth/signin", userCredentials)
+      .then((response) => {
+        console.log(response.data);
+        navigate("/sample");
+      })
+      .catch((error) => console.log(error.message));
   };
 
   return (
@@ -79,7 +89,11 @@ export default function SignIn() {
           </a>
         </div>
         <div className="d-grid">
-          <button className="btn btn-danger" type="submit">
+          <button
+            className="btn btn-danger"
+            type="submit"
+            onSubmit={handleSignIn}
+          >
             Login
           </button>
         </div>
@@ -88,7 +102,7 @@ export default function SignIn() {
         <OAuth />
       </div>
       <div className="mt-3 d-flex justify-content-center">
-         <p className="mb-0">
+        <p className="mb-0">
           Don't have an Account?{" "}
           <button
             type="button"
@@ -102,5 +116,3 @@ export default function SignIn() {
     </div>
   );
 }
-
-
