@@ -19,7 +19,12 @@ export default function HeroTrendingList() {
     <div>
       {topPost.map((post, index) => (
         <div className="card border-0 my-4" key={index}>
-          <Link to={`/posts/${post._id}`}>
+          <Link
+            to={`/article/${post._id}`}
+            onClick={() => {
+              localStorage.setItem("activeStoryId", post._id);
+            }}
+          >
             <img
               src={`http://localhost:3000/uploads/${post.cover}`}
               className="card-img-top"
@@ -41,8 +46,11 @@ export default function HeroTrendingList() {
 
             <div className="py-2">
               <Link
-                to={`/posts/${post._id}`}
+                to={`/article/${post._id}`}
                 className="text-dark text-decoration-none"
+                onClick={() => {
+                  localStorage.setItem("activeStoryId", post._id);
+                }}
               >
                 <h5 className="fw-bold">{post.tittle}</h5>
               </Link>

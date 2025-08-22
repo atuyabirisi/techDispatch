@@ -52,7 +52,7 @@ export default function Editor() {
     data.set("content", content);
 
     axios
-      .post("http://localhost:3000/article", data)
+      .post("http://localhost:3002/article", data)
       .then((res) => console.log(res.data))
       .catch((error) => console.log(error));
   };

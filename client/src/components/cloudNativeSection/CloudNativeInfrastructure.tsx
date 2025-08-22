@@ -49,8 +49,11 @@ export default function CloudNativeInfrastructure() {
                 </h6>
                 <h5>
                   <a
-                    href={`/posts/${story._id}`}
+                    href={`/article/${story._id}`}
                     className="link-dark text-decoration-none"
+                    onClick={() => {
+                      localStorage.setItem("activeStoryId", story._id);
+                    }}
                   >
                     {story.tittle}
                   </a>

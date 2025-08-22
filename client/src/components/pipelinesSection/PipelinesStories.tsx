@@ -34,7 +34,12 @@ export default function PipelinesStories() {
         {pipelinePosts.map((post) => (
           <div className="col-md-6 col-lg-3 mb-4" key={post._id}>
             <div className="card border-0 h-100">
-              <Link to={`/posts/${post._id}`}>
+              <Link
+                to={`/article/${post._id}`}
+                onClick={() => {
+                  localStorage.setItem("activeStoryId", post._id);
+                }}
+              >
                 <img
                   src={`http://localhost:3000/uploads/${post.cover}`}
                   alt={post.tittle}
@@ -53,8 +58,11 @@ export default function PipelinesStories() {
                 </div>
                 <h5>
                   <Link
-                    to={`/posts/${post._id}`}
+                    to={`/article/${post._id}`}
                     className="text-dark text-decoration-none"
+                    onClick={() => {
+                      localStorage.setItem("activeStoryId", post._id);
+                    }}
                   >
                     {post.tittle}
                   </Link>

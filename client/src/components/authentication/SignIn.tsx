@@ -10,8 +10,10 @@ import { openSignUpModal } from "../../slices/signUpModalSlice";
 import { closeSignInModal } from "../../slices/signInModalSlice";
 import OAuth from "./OAuth";
 import { useNavigate } from "react-router-dom";
+import apiClient from "../../utilities/apiClient";
+import useSigninUser from "../../customHooks/useSignIn";
 
-type SignInFormData = z.infer<typeof signInSchema>;
+export type SignInFormData = z.infer<typeof signInSchema>;
 
 export default function SignIn() {
   const navigate = useNavigate();
@@ -33,16 +35,32 @@ export default function SignIn() {
     resolver: zodResolver(signInSchema),
   });
 
-  const handleSignIn = (event: FormEvent) => {
+  const handleSignIn = async (event: FormEvent) => {
     event.preventDefault();
+
     const userCredentials = getValues();
-    axios
-      .post("http://localhost:3000/auth/signin", userCredentials)
-      .then((response) => {
-        console.log(response.data);
-        navigate("/sample");
-      })
-      .catch((error) => console.log(error.message));
+
+    const { authToken, error } = useSigninUser(userCredentials);
+
+    if (authToken) {
+      localStorage.setItem("authToken", authToken);
+      window.location.href = "/admin";
+    }
+
+    if (error) console.log(error);
+
+    // axios
+    //   .post("http://localhost:3000/auth/signin", userCredentials)
+    //   .then((response) => {
+    //     const { token } = response.data;
+
+    //     if (token) {
+    //       localStorage.setItem("authToken", token);
+
+    //       window.location.href = "/admin";
+    //     }
+    //   })
+    //   .catch((error) => console.log(error.message));
   };
 
   return (

@@ -27,8 +27,8 @@
 /*SINGLE POST STYLES*/
 .imageContainerStyle {
   max-height: 450px;
-  min-width: 85%;
-  max-width: 85%;
+  min-width: 75%;
+  max-width: 75%;
   margin: auto;
   overflow-y: hidden;
 }
@@ -40,7 +40,7 @@
 }
 
 .contentStyle {
-  font-size: 16px;
-  max-width: 85%;
+  font-size: 18px;
+  max-width: 75%;
   margin: auto;
 }

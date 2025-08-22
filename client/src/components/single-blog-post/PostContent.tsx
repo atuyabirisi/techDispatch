@@ -6,13 +6,19 @@ import parse from "html-react-parser";
 import PostReactionPanel from "./PostReactionPanel";
 import apiClient from "../../utilities/apiClient";
 import type { Post } from "../../interfaces/types";
+import PostComments from "./PostComments";
+import useSignedInUser from "../../customHooks/useSignedInUser";
 
 export default function PostContent() {
   const { id } = useParams<{ id: string }>();
 
   const [article, setArticle] = useState<Post | null>(null);
+
   const [loading, setLoading] = useState(false);
+
   const [error, setError] = useState<string>("");
+
+  const { loggedInUser } = useSignedInUser();
 
   useEffect(() => {
     if (!id) return;
@@ -21,7 +27,7 @@ export default function PostContent() {
       setLoading(true);
 
       apiClient
-        .get(`/posts/${id}`)
+        .get(`/article/${id}`)
         .then((res) => {
           setArticle(res.data);
           setLoading(false);
@@ -75,6 +81,12 @@ export default function PostContent() {
 
       <div className="px-lg-2 py-lg-2 lh-lg text-start contentStyle">
         {parse(article.content)}
+      </div>
+      <div className="bg-light mb-4 rounded contentStyle">
+        <PostComments
+          articleId={article._id}
+          commentorName={loggedInUser?.username}
+        />
       </div>
     </div>
   );
