@@ -19,7 +19,7 @@ export default function HeroMainStory() {
 
   return (
     <div className="card border-bottom-0">
-      <Link to={`/posts/${mainStory._id}`}>
+      <Link to={`/article/${mainStory._id}`}>
         <img
           src={`http://localhost:3000/uploads/${mainStory.cover}`}
           className="card-img-top"
@@ -44,8 +44,11 @@ export default function HeroMainStory() {
         <div className="text-dark py-1">
           <h5>
             <Link
-              to={`/posts/${mainStory._id}`}
+              to={`/article/${mainStory._id}`}
               className="text-dark fw-bold text-decoration-none"
+              onClick={() => {
+                localStorage.setItem("activeStoryId", mainStory._id);
+              }}
             >
               {mainStory.tittle}
             </Link>

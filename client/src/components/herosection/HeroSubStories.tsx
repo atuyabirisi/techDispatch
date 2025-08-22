@@ -19,7 +19,12 @@ export default function HeroSubStories() {
       {subStories.map((story, index) => (
         <div className="col-md-6 col-lg-12" key={index}>
           <div className="card mb-3 border-0">
-            <Link to={`/posts/${story._id}`}>
+            <Link
+              to={`/article/${story._id}`}
+              onClick={() => {
+                localStorage.setItem("activeStoryId", story._id);
+              }}
+            >
               <img
                 src={`http://localhost:3000/uploads/${story.cover}`}
                 className="card-img-top"
@@ -44,8 +49,11 @@ export default function HeroSubStories() {
               <div>
                 <h5>
                   <Link
-                    to={`/posts/${story._id}`}
+                    to={`/article/${story._id}`}
                     className="text-dark text-decoration-none fw-bold"
+                    onClick={() => {
+                      localStorage.setItem("activeStoryId", story._id);
+                    }}
                   >
                     {story.tittle}
                   </Link>

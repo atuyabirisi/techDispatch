@@ -40,6 +40,21 @@ export type EditorContent = {
   content: any;
 };
 
+//SINGLE POST
+
 export type ArticleData = {
   articleData: EditorContent;
+};
+
+export type CommentProps = {
+  articleId: string;
+  commentorName: string | undefined;
+};
+
+export type Comment = {
+  commenter: string;
+  article: string;
+  comment: string;
+  createdAt: string;
+  updatedAt: string;
 };

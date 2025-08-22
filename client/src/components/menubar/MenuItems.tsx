@@ -1,8 +1,9 @@
 const menuLinks = [
+  { href: "/", label: "HOME" },
   { href: "/about-us", label: "ABOUT" },
-  { href: "/latest", label: "LATEST" },
-  { href: "/startups", label: "STARTUPS" },
-  { href: "/governance", label: "POLICY & GOVERNANCE" },
+  { href: "/resources", label: "RESOURCES" },
+  { href: "/forum", label: "FORUM" },
+  { href: "/contact", label: "CONTACT" },
 ];
 
 export default function MenuItems() {

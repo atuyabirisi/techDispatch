@@ -18,6 +18,14 @@ module.exports = function (app) {
   );
 
   app.use(
+    "/comment",
+    createProxyMiddleware({
+      target: process.env.COMMENT,
+      changeOrigin: true,
+    })
+  );
+
+  app.use(
     "/top_pick",
     createProxyMiddleware({
       target: process.env.TOP_PICK,
