@@ -34,6 +34,14 @@ router.post("/", upload.single("cover"), async (req, res) => {
   res.status(200).send("Article uploaded successfully");
 });
 
+router.get("/", async (_req, res) => {
+  const articles = await ArticleModel.find().sort({ createdAt: -1 });
+
+  if (!articles) return res.status(404).send({ error: "no article found" });
+
+  res.send(articles);
+});
+
 router.get("/:id", async (req, res) => {
   const { id } = req.params;
 

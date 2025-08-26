@@ -1,14 +1,19 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import EditorContainer from "../components/admin-ui/editorComponents/EditorContainer";
 import Sidepanel from "../components/admin-ui/sidepanel/Sidepanel";
 import BrandLogo from "../components/navbar/BrandLogo";
 import { TiThMenu } from "react-icons/ti";
-import type { AppDispatch } from "../app/store";
+import type { AppDispatch, RootState } from "../app/store";
 import SidepanelOffCanvas from "../components/admin-ui/sidepanel/SidepanelOffCanvas";
 import { openSidepanel } from "../slices/toggleSidepanel1";
+import AllArticles from "../components/admin-ui/Articles";
 
 export default function AdminDashboard() {
   const dispatch: AppDispatch = useDispatch();
+
+  const { adminScreenState } = useSelector(
+    (state: RootState) => state.adminDashScreen
+  );
 
   const handleOpenSidepanel = () => {
     dispatch(openSidepanel());
@@ -41,7 +46,8 @@ export default function AdminDashboard() {
           <Sidepanel />
         </div>
         <div className="col-lg-8 bg-light">
-          <EditorContainer />
+          {adminScreenState == 1 && <EditorContainer />}
+          {adminScreenState == 2 && <AllArticles />}
         </div>
       </div>
     </div>

@@ -40,27 +40,18 @@ export default function SignIn() {
 
     const userCredentials = getValues();
 
-    const { authToken, error } = useSigninUser(userCredentials);
+    axios
+      .post("http://localhost:3000/auth/signin", userCredentials)
+      .then((response) => {
+        const { token } = response.data;
 
-    if (authToken) {
-      localStorage.setItem("authToken", authToken);
-      window.location.href = "/admin";
-    }
+        if (token) {
+          localStorage.setItem("authToken", token);
 
-    if (error) console.log(error);
-
-    // axios
-    //   .post("http://localhost:3000/auth/signin", userCredentials)
-    //   .then((response) => {
-    //     const { token } = response.data;
-
-    //     if (token) {
-    //       localStorage.setItem("authToken", token);
-
-    //       window.location.href = "/admin";
-    //     }
-    //   })
-    //   .catch((error) => console.log(error.message));
+          window.location.href = "/admin";
+        }
+      })
+      .catch((error) => console.log(error.message));
   };
 
   return (

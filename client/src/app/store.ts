@@ -5,6 +5,8 @@ import signInModalReducer from "../slices/signInModalSlice";
 import editorScreenStateReducer from "../slices/editorScreensSlice";
 import editorContentReducer from "../slices/editorContentSlice";
 import toggleSidepanelReducer from "../slices/toggleSidepanel1";
+import adminDashScreenReducer from "../slices/adminDashScreens";
+import paginationReducer from "../slices/paginationSlice";
 
 export const store = configureStore({
   reducer: {
@@ -14,6 +16,8 @@ export const store = configureStore({
     editorScreenState: editorScreenStateReducer,
     editorContent: editorContentReducer,
     sidepanelCanvas: toggleSidepanelReducer,
+    adminDashScreen: adminDashScreenReducer,
+    pagination: paginationReducer,
   },
 });
 

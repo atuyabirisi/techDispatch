@@ -58,3 +58,9 @@ export type Comment = {
   createdAt: string;
   updatedAt: string;
 };
+
+export type PaginationState = {
+  currentPage: number;
+  postsPerPage: number;
+  totalPosts: number;
+};
