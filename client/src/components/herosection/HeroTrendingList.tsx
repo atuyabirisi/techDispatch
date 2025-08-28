@@ -1,23 +1,24 @@
 import { format } from "date-fns";
-import { useEffect, useState } from "react";
-import axios from "axios";
 import { Link } from "react-router-dom";
 import type { Post } from "../../interfaces/types";
 import giveFirstFortyWords from "../../utilities/giveFirstFortyWords";
+import useData from "../../hooks/useData";
+import CardPlaceholder from "../placeholder/CardPlaceholder";
 
 export default function HeroTrendingList() {
-  const [topPost, setTopPost] = useState<Post[]>([]);
+  const { data, isLoading, error } = useData<Post[]>("/top_pick");
 
-  useEffect(() => {
-    axios
-      .get("http://localhost:3000/top_pick")
-      .then((res) => setTopPost(res.data))
-      .catch((error) => console.error("Error fetching trending posts:", error));
-  }, []);
+  const fileUploadsPath = import.meta.env.VITE_UPLOADS_URL;
 
   return (
     <div>
-      {topPost.map((post, index) => (
+      {isLoading && <CardPlaceholder />}
+      {error && (
+        <div>
+          <h6 className="text text-danger">Error loading posts</h6>
+        </div>
+      )}
+      {data?.map((post, index) => (
         <div className="card border-0 my-4" key={index}>
           <Link
             to={`/article/${post._id}`}
@@ -26,7 +27,7 @@ export default function HeroTrendingList() {
             }}
           >
             <img
-              src={`http://localhost:3000/uploads/${post.cover}`}
+              src={`${fileUploadsPath}/${post.cover}`}
               className="card-img-top"
               alt={post.category}
             />

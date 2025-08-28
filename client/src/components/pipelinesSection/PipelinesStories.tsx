@@ -1,25 +1,22 @@
-import { useEffect, useState } from "react";
 import { FiChevronsRight } from "react-icons/fi";
-import axios from "axios";
 import { format } from "date-fns";
 import { Link } from "react-router-dom";
 import type { Post } from "../../interfaces/types";
+import useData from "../../hooks/useData";
+import CardPlaceholder from "../placeholder/CardPlaceholder";
 
 export default function PipelinesStories() {
-  const [pipelinePosts, setPipelinePosts] = useState<Post[]>([]);
+  const { data, isLoading, error } = useData<Post[]>("/cicd");
 
-  useEffect(() => {
-    axios
-      .get("http://localhost:3000/cicd")
-      .then((res) => setPipelinePosts(res.data))
-      .catch((err) => console.error("Failed to fetch pipeline posts:", err));
-  }, []);
+  const fileUploadsPath = import.meta.env.VITE_UPLOADS_URL;
+
+  const pArray = [1, 2, 3, 4];
 
   return (
-    <section className="py-4">
+    <section className="py-6">
       <hr className="my-3 mx-1" />
 
-      <div className="d-flex justify-content-between align-items-center px-2 mb-3">
+      <div className="d-flex justify-content-between align-items-center border-bottom py-5 mb-3">
         <h4 className="fw-bold m-0">CI/CD & Pipelines</h4>
         <Link
           to="/category/pipelines"
@@ -31,46 +28,58 @@ export default function PipelinesStories() {
       </div>
 
       <div className="row">
-        {pipelinePosts.map((post) => (
-          <div className="col-md-6 col-lg-3 mb-4" key={post._id}>
-            <div className="card border-0 h-100">
-              <Link
-                to={`/article/${post._id}`}
-                onClick={() => {
-                  localStorage.setItem("activeStoryId", post._id);
-                }}
-              >
-                <img
-                  src={`http://localhost:3000/uploads/${post.cover}`}
-                  alt={post.tittle}
-                  className="card-img-top"
-                  style={{ height: "200px", objectFit: "cover" }}
-                />
-              </Link>
-              <div className="card-body bg-light">
-                <div className="d-flex justify-content-between border-bottom py-1 mb-2">
-                  <small className="text-danger">
-                    {post.category.toUpperCase()}
-                  </small>
-                  <small className="text-dark">
-                    {format(post.createdAt, "MMM d, yyyy")}
-                  </small>
+        {isLoading ? (
+          pArray.map((n) => (
+            <div className="col-md-6 col-lg-3 mb-4" key={n}>
+              <CardPlaceholder />
+            </div>
+          ))
+        ) : error ? (
+          <div>
+            <h6 className="text-danger">Ooops...something went wrong</h6>
+          </div>
+        ) : (
+          data?.map((post) => (
+            <div className="col-md-6 col-lg-3 mb-4" key={post._id}>
+              <div className="card border-0 h-100">
+                <Link
+                  to={`/article/${post._id}`}
+                  onClick={() => {
+                    localStorage.setItem("activeStoryId", post._id);
+                  }}
+                >
+                  <img
+                    src={`${fileUploadsPath}/${post.cover}`}
+                    alt={post.tittle}
+                    className="card-img-top"
+                    style={{ height: "200px", objectFit: "cover" }}
+                  />
+                </Link>
+                <div className="card-body bg-light">
+                  <div className="d-flex justify-content-between border-bottom py-1 mb-2">
+                    <small className="text-danger">
+                      {post.category.toUpperCase()}
+                    </small>
+                    <small className="text-dark">
+                      {format(post.createdAt, "MMM d, yyyy")}
+                    </small>
+                  </div>
+                  <h5>
+                    <Link
+                      to={`/article/${post._id}`}
+                      className="text-dark text-decoration-none"
+                      onClick={() => {
+                        localStorage.setItem("activeStoryId", post._id);
+                      }}
+                    >
+                      {post.tittle}
+                    </Link>
+                  </h5>
                 </div>
-                <h5>
-                  <Link
-                    to={`/article/${post._id}`}
-                    className="text-dark text-decoration-none"
-                    onClick={() => {
-                      localStorage.setItem("activeStoryId", post._id);
-                    }}
-                  >
-                    {post.tittle}
-                  </Link>
-                </h5>
               </div>
             </div>
-          </div>
-        ))}
+          ))
+        )}
       </div>
     </section>
   );
