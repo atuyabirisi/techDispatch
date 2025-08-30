@@ -3,9 +3,16 @@ import { RiEdit2Fill } from "react-icons/ri";
 import { format } from "date-fns";
 import { useArticles } from "../../hooks/useArticles";
 import Paginate from "./Paginate";
+import { useSelector } from "react-redux";
+import type { RootState } from "../../app/store";
+import { usePagination } from "../../utilities/usePagination";
 
 export default function AllArticles() {
   const { articles } = useArticles();
+  const { currentPage, postsPerPage } = useSelector(
+    (store: RootState) => store.pagination
+  );
+  const paginatedArticles = usePagination(articles, postsPerPage, currentPage);
 
   return (
     <>
@@ -22,7 +29,7 @@ export default function AllArticles() {
               </tr>
             </thead>
             <tbody>
-              {articles.map((article, index) => (
+              {paginatedArticles.map((article, index) => (
                 <tr key={index}>
                   <td>{article._id}</td>
                   <td>{article.tittle}</td>
