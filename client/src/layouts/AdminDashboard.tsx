@@ -6,7 +6,7 @@ import { TiThMenu } from "react-icons/ti";
 import type { AppDispatch, RootState } from "../app/store";
 import SidepanelOffCanvas from "../components/admin-ui/sidepanel/SidepanelOffCanvas";
 import { openSidepanel } from "../slices/toggleSidepanel1";
-import AllArticles from "../components/admin-ui/Articles";
+import AllArticles from "../components/admin-ui/manage-posts/Articles";
 
 export default function AdminDashboard() {
   const dispatch: AppDispatch = useDispatch();

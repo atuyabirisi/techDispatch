@@ -55,4 +55,18 @@ router.get("/:id", async (req, res) => {
   res.send(singlePost);
 });
 
+router.delete("/:id", async (req, res) => {
+  const { id } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(id))
+    return res.status(400).send({ error: "Invalid ID" });
+
+  const deletedPost = await ArticleModel.findByIdAndDelete(id);
+
+  if (deletedPost === null)
+    return res.status(404).send({ error: "Post not found" });
+
+  res.send({ message: "Post deleted successfully" });
+});
+
 module.exports = router;

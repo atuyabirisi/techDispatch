@@ -33,6 +33,11 @@ export type AuthModalState = {
   isOpen: boolean;
 };
 
+export type DeleteModalState = {
+  isOpen: boolean;
+  articleId: string;
+};
+
 //EDITOR
 export type EditorContent = {
   tittle: string;

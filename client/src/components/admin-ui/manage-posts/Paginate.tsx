@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
-import type { AppDispatch, RootState } from "../../app/store";
-import { updatePageNumber } from "../../slices/paginationSlice";
+import type { AppDispatch, RootState } from "../../../app/store";
+import { updatePageNumber } from "../../../slices/paginationSlice";
 
 export default function Paginate() {
   const dispatch: AppDispatch = useDispatch();
