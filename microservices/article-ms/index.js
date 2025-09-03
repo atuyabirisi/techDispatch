@@ -9,6 +9,7 @@ const heroMainSectionPick = require("./routes/mainHeroSec");
 const heroDockerSec = require("./routes/heroDockerSec");
 const cicdPipelines = require("./routes/cicdPipelines");
 const commentsAPI = require("./routes/comment");
+const cloudNativeSection = require("./routes/cloudNative");
 
 const app = express();
 
@@ -22,6 +23,7 @@ app.use("/hero_main", heroMainSectionPick);
 app.use("/hero_docker", heroDockerSec);
 app.use("/cicd", cicdPipelines);
 app.use("/comment", commentsAPI);
+app.use("/cloud_native", cloudNativeSection);
 
 connectToDB();
 

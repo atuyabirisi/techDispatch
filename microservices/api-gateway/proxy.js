@@ -64,4 +64,12 @@ module.exports = function (app) {
       changeOrigin: true,
     })
   );
+
+  app.use(
+    "/cloud_native",
+    createProxyMiddleware({
+      target: process.env.CLOUD_NATIVE_SECTION,
+      changeOrigin: true,
+    })
+  );
 };
