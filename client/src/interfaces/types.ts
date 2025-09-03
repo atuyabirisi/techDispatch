@@ -69,3 +69,8 @@ export type PaginationState = {
   postsPerPage: number;
   totalPosts: number;
 };
+
+//Generic Page Wrapper Props
+export type GenericPageWrapperProp = {
+  children: React.ReactNode;
+};

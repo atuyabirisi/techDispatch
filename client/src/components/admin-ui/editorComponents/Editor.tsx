@@ -16,7 +16,6 @@ const categoryArray = [
   "CI/CD & Pipelines",
   "Docker & Containerization",
   "Cloud & Infrastructure (Azure)",
-  "DevOps Practices",
 ];
 
 export default function Editor() {

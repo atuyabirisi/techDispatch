@@ -8,6 +8,8 @@ import CardPlaceholder from "../placeholder/CardPlaceholder";
 export default function PipelinesStories() {
   const { data, isLoading, error } = useData<Post[]>("/cicd");
 
+  const articles = data?.slice(0, 4);
+
   const fileUploadsPath = import.meta.env.VITE_UPLOADS_URL;
 
   const pArray = [1, 2, 3, 4];
@@ -17,9 +19,11 @@ export default function PipelinesStories() {
       <hr className="my-3 mx-1" />
 
       <div className="d-flex justify-content-between align-items-center border-bottom py-5 mb-3">
-        <h4 className="fw-bold m-0">CI/CD & Pipelines</h4>
+        <h4 className="fw-bold m-0">
+          Continuous Integration/Continuous Deployment
+        </h4>
         <Link
-          to="/category/pipelines"
+          to="all/cicd"
           className="text-danger text-decoration-none d-flex align-items-center gap-2"
         >
           <span className="fs-5">View All</span>
@@ -39,7 +43,7 @@ export default function PipelinesStories() {
             <h6 className="text-danger">Ooops...something went wrong</h6>
           </div>
         ) : (
-          data?.map((post) => (
+          articles?.map((post) => (
             <div className="col-md-6 col-lg-3 mb-4" key={post._id}>
               <div className="card border-0 h-100">
                 <Link
@@ -57,9 +61,12 @@ export default function PipelinesStories() {
                 </Link>
                 <div className="card-body bg-light">
                   <div className="d-flex justify-content-between border-bottom py-1 mb-2">
-                    <small className="text-danger">
-                      {post.category.toUpperCase()}
+                    <small>
+                      <span className="text-danger text-decoration-none">
+                        {post.category.toUpperCase()}
+                      </span>
                     </small>
+
                     <small className="text-dark">
                       {format(post.createdAt, "MMM d, yyyy")}
                     </small>

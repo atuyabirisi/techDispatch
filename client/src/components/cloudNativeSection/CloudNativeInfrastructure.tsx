@@ -5,7 +5,9 @@ import useData from "../../hooks/useData";
 import CardPlaceholder from "../placeholder/CardPlaceholder";
 
 export default function CloudNativeInfrastructure() {
-  const { data, isLoading, error } = useData<Post[]>("/cicd");
+  const { data, isLoading, error } = useData<Post[]>("/cloud_native");
+
+  const articles = data?.slice(0, 4);
 
   const fileUploadsPath = import.meta.env.VITE_UPLOADS_URL;
 
@@ -14,9 +16,9 @@ export default function CloudNativeInfrastructure() {
   return (
     <div className="py-2">
       <div className="d-flex justify-content-between align-items-center border-top border-bottom py-5">
-        <h4 className="fw-bold m-0">Cloud Native & Infrastructure</h4>
+        <h4 className="fw-bold m-0">Cloud native and infrastructure</h4>
         <Link
-          to="/category/pipelines"
+          to="/all/cloud_native"
           className="text-danger text-decoration-none d-flex align-items-center gap-2"
         >
           <span className="fs-5">View All</span>
@@ -36,7 +38,7 @@ export default function CloudNativeInfrastructure() {
             <h6 className="text-danger">Ooops...something went wrong</h6>
           </div>
         ) : (
-          data?.map((story) => (
+          articles?.map((story) => (
             <div className="col-md-6 col-lg-3" key={story._id}>
               <div className="card mb-3 border-0">
                 <img
@@ -45,11 +47,12 @@ export default function CloudNativeInfrastructure() {
                   alt={story.tittle || "Article image"}
                 />
                 <div className="card-body px-1">
-                  <h6>
-                    <a href="#" className="link-danger text-decoration-none">
-                      {story.category?.toUpperCase()}
-                    </a>
-                  </h6>
+                  <small>
+                    <span className="text-danger text-decoration-none">
+                      {story.category.toUpperCase()}
+                    </span>
+                  </small>
+
                   <h5>
                     <a
                       href={`/article/${story._id}`}
