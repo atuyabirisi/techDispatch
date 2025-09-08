@@ -29,7 +29,8 @@ export default function HeroTrendingList() {
             <img
               src={`${fileUploadsPath}/${post.cover}`}
               className="card-img-top"
-              alt={post.category}
+              alt="trending post cover"
+              style={{ maxHeight: "200px", objectFit: "cover" }}
             />
           </Link>
 
@@ -45,16 +46,18 @@ export default function HeroTrendingList() {
               </small>
             </div>
 
-            <div className="py-2">
-              <Link
-                to={`/article/${post._id}`}
-                className="text-dark text-decoration-none"
-                onClick={() => {
-                  localStorage.setItem("activeStoryId", post._id);
-                }}
-              >
-                <h5 className="fw-bold">{post.tittle}</h5>
-              </Link>
+            <div className="py-1">
+              <h5>
+                <Link
+                  to={`/article/${post._id}`}
+                  className="text-dark text-decoration-none"
+                  onClick={() => {
+                    localStorage.setItem("activeStoryId", post._id);
+                  }}
+                >
+                  {post.tittle}
+                </Link>
+              </h5>
             </div>
 
             <div>{giveFirstFortyWords(post.content)}</div>

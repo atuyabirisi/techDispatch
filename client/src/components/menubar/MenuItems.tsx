@@ -1,7 +1,6 @@
 const menuLinks = [
   { href: "/", label: "HOME" },
   { href: "/about-us", label: "ABOUT" },
-  { href: "/resources", label: "RESOURCES" },
   { href: "/forum", label: "FORUM" },
   { href: "/contact", label: "CONTACT" },
 ];
@@ -14,13 +13,15 @@ export default function MenuItems() {
     >
       <div className="p-2 d-flex gap-5">
         {menuLinks.map(({ href, label }, index) => (
-          <a
-            key={index}
-            href={href}
-            className="link-dark border-bottom border-light text-decoration-none"
-          >
-            <h5 className="m-0">{label}</h5>
-          </a>
+          <div className="linkbox">
+            <a
+              key={index}
+              href={href}
+              className="link-dark text-decoration-none"
+            >
+              <h5 className="m-0">{label}</h5>
+            </a>
+          </div>
         ))}
       </div>
     </nav>

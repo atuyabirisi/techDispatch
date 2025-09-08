@@ -44,3 +44,18 @@
   max-width: 75%;
   margin: auto;
 }
+
+/*MENU*/
+.linkbox {
+  border-bottom: 2px solid transparent;
+  transition: border-bottom-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.linkbox:hover {
+  border-bottom: 2px solid black;
+}
+
+/*LINKS*/
+a:hover {
+  font-weight: bold;
+}
