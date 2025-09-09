@@ -5,10 +5,10 @@ const ArticleModel = require("../models/article");
 const mongoose = require("mongoose");
 
 const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
+  destination: function (_req, _file, cb) {
     cb(null, "./uploads");
   },
-  filename: function (req, file, cb) {
+  filename: function (_req, file, cb) {
     const suffix = Date.now();
 
     cb(null, suffix + file.originalname);
@@ -17,56 +17,75 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-router.post("/", upload.single("cover"), async (req, res) => {
-  const { tittle, content, category } = req.body;
+router.post("/", upload.single("cover"), async (req, res, next) => {
+  try {
+    const { tittle, content, category } = req.body;
 
-  const { filename } = req.file;
+    const { filename } = req.file;
 
-  const newArticle = new ArticleModel({
-    tittle,
-    category,
-    content,
-    cover: filename,
-  });
+    const newArticle = new ArticleModel({
+      tittle,
+      category,
+      content,
+      cover: filename,
+    });
 
-  await newArticle.save();
+    await newArticle.save();
 
-  res.status(200).send("Article uploaded successfully");
+    res.status(200).json({ message: "Article uploaded successfully" });
+  } catch (error) {
+    next(error);
+  }
 });
 
 router.get("/", async (_req, res) => {
-  const articles = await ArticleModel.find().sort({ createdAt: -1 });
+  try {
+    const articles = await ArticleModel.find().sort({ createdAt: -1 });
 
-  if (!articles) return res.status(404).send({ error: "no article found" });
+    if (!articles) return res.status(404).json({ error: "no article found" });
 
-  res.send(articles);
+    res.status(200).json(articles);
+  } catch (error) {
+    next(error);
+  }
 });
 
-router.get("/:id", async (req, res) => {
-  const { id } = req.params;
+router.get("/:id", async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    if (id == null) return res.status(400).send({ error: "ID is required" });
 
-  if (!mongoose.Types.ObjectId.isValid(id))
-    return res.status(400).send({ error: "Invalid ID" });
+    if (!mongoose.Types.ObjectId.isValid(id))
+      return res.status(400).send({ error: "Invalid ID" });
 
-  const singlePost = await ArticleModel.findById(id);
+    const singlePost = await ArticleModel.findById(id);
 
-  if (!singlePost) return res.status(404).send({ error: "Post not found" });
+    if (!singlePost) return res.status(404).json({ error: "Post not found" });
 
-  res.send(singlePost);
+    res.status(200).json(singlePost);
+  } catch (error) {
+    next(error);
+  }
 });
 
-router.delete("/:id", async (req, res) => {
-  const { id } = req.params;
+router.delete("/:id", async (req, res, next) => {
+  try {
+    const { id } = req.params;
 
-  if (!mongoose.Types.ObjectId.isValid(id))
-    return res.status(400).send({ error: "Invalid ID" });
+    if (id == null) return res.status(400).json({ error: "ID is required" });
 
-  const deletedPost = await ArticleModel.findByIdAndDelete(id);
+    if (!mongoose.Types.ObjectId.isValid(id))
+      return res.status(400).json({ error: "Invalid ID" });
 
-  if (deletedPost === null)
-    return res.status(404).send({ error: "Post not found" });
+    const deletedPost = await ArticleModel.findByIdAndDelete(id);
 
-  res.send({ message: "Post deleted successfully" });
+    if (deletedPost === null)
+      return res.status(404).json({ error: "Post not found" });
+
+    res.status(200).json({ message: "Post deleted successfully" });
+  } catch (error) {
+    next(error);
+  }
 });
 
 module.exports = router;

@@ -10,6 +10,8 @@ const heroDockerSec = require("./routes/heroDockerSec");
 const cicdPipelines = require("./routes/cicdPipelines");
 const commentsAPI = require("./routes/comment");
 const cloudNativeSection = require("./routes/cloudNative");
+const logger = require("./utils/logger");
+const error = require("./utils/error");
 
 const app = express();
 
@@ -25,10 +27,14 @@ app.use("/cicd", cicdPipelines);
 app.use("/comment", commentsAPI);
 app.use("/cloud_native", cloudNativeSection);
 
+app.use(error);
+
 connectToDB();
 
 const port = process.env.ARTICLE_MS_PORT;
 
-app.listen(port, () => console.log(`article-ms listening on port ${port}`));
+app.listen(port, () => {
+  logger.info(`article-ms listening on port ${port}`);
+});
 
 module.exports = app;
