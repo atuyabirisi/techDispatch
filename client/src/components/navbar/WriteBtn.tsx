@@ -1,13 +1,9 @@
-import { useDispatch } from "react-redux";
-import type { AppDispatch } from "../../app/store";
 import SignUpModal from "../../modals/SignupModal";
-import { openSignUpModal } from "../../slices/signUpModalSlice";
 import SignInModal from "../../modals/SignInModal";
+import authModalsDispatcher from "../../utilities/authModalsActions";
 
 export default function WriteBtn() {
-  const dispatch: AppDispatch = useDispatch();
-
-  const handleInitiateAuthentication = () => dispatch(openSignUpModal());
+  const { openLoginModal } = authModalsDispatcher();
 
   return (
     <div>
@@ -15,7 +11,7 @@ export default function WriteBtn() {
       <SignInModal />
       <button
         className="btn btn-outline-danger fw-bold"
-        onClick={handleInitiateAuthentication}
+        onClick={openLoginModal}
       >
         Write
       </button>

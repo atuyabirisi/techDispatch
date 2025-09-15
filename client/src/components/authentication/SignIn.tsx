@@ -1,30 +1,22 @@
 import { useForm } from "react-hook-form";
-import { useEffect, useState, type FormEvent } from "react";
+import { useState, type FormEvent } from "react";
 import axios from "axios";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signInSchema } from "../../zodSchemas/authenticationSchema";
-import type { AppDispatch } from "../../app/store";
-import { useDispatch } from "react-redux";
-import { openSignUpModal } from "../../slices/signUpModalSlice";
-import { closeSignInModal } from "../../slices/signInModalSlice";
 import OAuth from "./OAuth";
-import useData from "../../hooks/useData";
+import { toast } from "react-hot-toast";
+import authModalsDispatchError from "../../utilities/authModalsActions";
 
 export type SignInFormData = z.infer<typeof signInSchema>;
 
 export default function SignIn() {
-  const { data } = useData("/auth/signin");
-  console.log(data);
-
-  const dispatch: AppDispatch = useDispatch();
-
-  const openSignUp = () => {
-    dispatch(closeSignInModal());
-    dispatch(openSignUpModal());
-  };
+  const { registerUserModal } = authModalsDispatchError();
 
   const [showPass, setShowPass] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const endPoint = import.meta.env.VITE_SIGNIN_ENDPOINT;
 
   const {
     register,
@@ -40,17 +32,21 @@ export default function SignIn() {
     const userCredentials = getValues();
 
     axios
-      .post("http://localhost:3000/auth/signin", userCredentials)
+      .post(endPoint, userCredentials)
       .then((response) => {
         const { token } = response.data;
 
         if (token) {
           localStorage.setItem("authToken", token);
 
-          window.location.href = "/admin";
+          toast.success("Signed in successfully!");
+
+          setTimeout(() => {
+            window.location.href = "/admin";
+          }, 1500);
         }
       })
-      .catch((error) => console.log(error.message));
+      .catch((error) => setErrorMessage(error.message));
   };
 
   return (
@@ -59,6 +55,7 @@ export default function SignIn() {
         <h4>Welcome Back!</h4>
         <h5>Login</h5>
       </div>
+      {errorMessage && <p className="text-danger">{errorMessage}</p>}
       <form onSubmit={handleSignIn}>
         <div className="mb-3">
           <label htmlFor="email" className="form-label">
@@ -115,7 +112,7 @@ export default function SignIn() {
           <button
             type="button"
             className="btn btn-link p-0 text-dark fw-bold"
-            onClick={openSignUp}
+            onClick={registerUserModal}
           >
             Sign Up
           </button>

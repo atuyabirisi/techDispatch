@@ -13,7 +13,7 @@ export default function MenuItems() {
     >
       <div className="p-2 d-flex gap-5">
         {menuLinks.map(({ href, label }, index) => (
-          <div className="linkbox">
+          <div className="linkbox" key={index}>
             <a
               key={index}
               href={href}

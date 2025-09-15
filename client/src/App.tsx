@@ -5,11 +5,14 @@ import ViewAllCiCdArticles from "./pages/CicdArticlesPage";
 import ScrollToTop from "./components/scroll-to-top/ScrollToTop";
 import CloudNativePage from "./pages/CloudNativePage";
 import AdminDashboardPage from "./pages/AdminDashBoardPage";
+import { Toaster } from "react-hot-toast";
 
 export default function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
+      <Toaster position="top-center" />
+
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/article/:id" element={<BlogPostPage />} />

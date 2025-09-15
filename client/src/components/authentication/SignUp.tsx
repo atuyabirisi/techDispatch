@@ -4,22 +4,17 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
 import { signUpSchema } from "../../zodSchemas/authenticationSchema";
-import type { AppDispatch } from "../../app/store";
-import { useDispatch } from "react-redux";
-import { closeSignUpModal } from "../../slices/signUpModalSlice";
-import { openSignInModal } from "../../slices/signInModalSlice";
+import { toast } from "react-hot-toast";
+import authModalsDispatcher from "../../utilities/authModalsActions";
 
 type SignUpFormData = z.infer<typeof signUpSchema>;
 
 export default function SignUp() {
-  const dispatch: AppDispatch = useDispatch();
-
-  const handleBackToLogin = () => {
-    dispatch(closeSignUpModal());
-    dispatch(openSignInModal());
-  };
-
+  const { openLoginModal } = authModalsDispatcher();
   const [showPassword, setShowPassword] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const endPoint = import.meta.env.VITE_SIGNUP_ENDPOINT;
 
   const {
     register,
@@ -35,17 +30,24 @@ export default function SignUp() {
     const user = getValues();
 
     axios
-      .post("http://localhost:3000/auth/signup", user)
-      .then((res) => console.log(res.data))
-      .catch((error) => console.log(error));
+      .post(endPoint, user)
+      .then((_res) => {
+        toast.success("Signed up successfully!");
+
+        setTimeout(() => {
+          openLoginModal();
+        }, 1500);
+      })
+      .catch((error) => setErrorMessage(error.message));
   };
 
   return (
     <>
       <div className="d-flex flex-column align-items-center py-2">
-        <h4>Join space techDispatch</h4>
-        <h5> ...& lets write</h5>
+        <h4>The techDispatch</h4>
+        <h5>lets write...</h5>
       </div>
+      {errorMessage && <p className="text-danger">{errorMessage}</p>}
       <form autoComplete="false" onSubmit={handleSubmit}>
         <div className="mt-2 mb-3">
           <label htmlFor="email" className="form-label">
@@ -119,7 +121,7 @@ export default function SignUp() {
           <button
             type="button"
             className="btn btn-link p-0 text-dark fw-bold"
-            onClick={handleBackToLogin}
+            onClick={openLoginModal}
           >
             Login
           </button>
