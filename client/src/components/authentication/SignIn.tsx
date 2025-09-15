@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import axios from "axios";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -9,14 +9,13 @@ import { useDispatch } from "react-redux";
 import { openSignUpModal } from "../../slices/signUpModalSlice";
 import { closeSignInModal } from "../../slices/signInModalSlice";
 import OAuth from "./OAuth";
-import { useNavigate } from "react-router-dom";
-import apiClient from "../../utilities/apiClient";
-import useSigninUser from "../../customHooks/useSignIn";
+import useData from "../../hooks/useData";
 
 export type SignInFormData = z.infer<typeof signInSchema>;
 
 export default function SignIn() {
-  const navigate = useNavigate();
+  const { data } = useData("/auth/signin");
+  console.log(data);
 
   const dispatch: AppDispatch = useDispatch();
 

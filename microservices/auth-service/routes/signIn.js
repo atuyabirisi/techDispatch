@@ -30,6 +30,8 @@ router.get("/", authorizationMiddleware, async (req, res, next) => {
   try {
     const userId = req.user._id;
 
+    if (!userId) return res.status(401).json({ message: "Unauthorized" });
+
     const currentUser = await User.findById(userId).select("-password");
 
     if (currentUser === null)

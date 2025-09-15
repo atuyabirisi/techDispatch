@@ -2,3 +2,5 @@ node_modules/
 .env
 
 uploads/
+
+article-ms.log
