@@ -42,7 +42,7 @@ export default function SignIn() {
           toast.success("Signed in successfully!");
 
           setTimeout(() => {
-            window.location.href = "/admin";
+            window.location.href = "/dashboard";
           }, 1500);
         }
       })

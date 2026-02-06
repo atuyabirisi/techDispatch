@@ -16,7 +16,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/article/:id" element={<BlogPostPage />} />
-        <Route path="/admin" element={<AdminDashboardPage />} />
+        <Route path="/dashboard" element={<AdminDashboardPage />} />
         <Route path="/all/cicd" element={<ViewAllCiCdArticles />} />
         <Route path="/all/cloud_native" element={<CloudNativePage />} />
       </Routes>

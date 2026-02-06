@@ -27,7 +27,7 @@ export default function HeroSubStories() {
 
   return (
     <div className="row">
-      {data.map((story) => (
+      {data?.map((story) => (
         <div className="col-md-6 col-lg-12" key={story._id}>
           <div className="card mb-3 border-0">
             <Link
