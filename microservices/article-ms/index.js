@@ -17,8 +17,16 @@ const app = express();
 
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
-app.use(cors());
 app.use(express.json());
+
+// app.use(
+//   cors({
+//     origin: ["http://frontend:30080", "http://192.168.49.2:30080"],
+//     methods: ["GET", "POST", "PUT", "DELETE"],
+//   })
+// );
+
+app.use(cors());
 app.use("/article", articleApi);
 app.use("/top_pick", topPick);
 app.use("/hero_main", heroMainSectionPick);

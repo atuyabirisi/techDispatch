@@ -3,17 +3,9 @@ const router = express.Router();
 const multer = require("multer");
 const ArticleModel = require("../models/article");
 const mongoose = require("mongoose");
+const { uploadImage } = require("../utils/cloudinaryapi");
 
-const storage = multer.diskStorage({
-  destination: function (_req, _file, cb) {
-    cb(null, "./uploads");
-  },
-  filename: function (_req, file, cb) {
-    const suffix = Date.now();
-
-    cb(null, suffix + file.originalname);
-  },
-});
+const storage = multer.memoryStorage();
 
 const upload = multer({ storage: storage });
 
@@ -21,20 +13,21 @@ router.post("/", upload.single("cover"), async (req, res, next) => {
   try {
     const { tittle, content, category } = req.body;
 
-    const { filename } = req.file;
+    const result = await uploadImage(req.file.buffer);
 
     const newArticle = new ArticleModel({
       tittle,
       category,
       content,
-      cover: filename,
+      cover: result.secure_url,
     });
 
     await newArticle.save();
 
     res.status(200).json({ message: "Article uploaded successfully" });
   } catch (error) {
-    next(error);
+    console.log(error);
+    // next(error);
   }
 });
 
