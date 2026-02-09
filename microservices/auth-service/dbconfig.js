@@ -2,23 +2,11 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 
 const connectDB = async () => {
-  let dbUrl;
-
-  switch (process.env.NODE_ENV) {
-    case "test":
-      dbUrl = process.env.DB_URL_TEST;
-      break;
-    case "production":
-      dbUrl = process.env.DB_URL_PRODUCTION;
-      break;
-    default:
-      dbUrl = process.env.DB_URL_DEV;
-  }
-
   try {
-    mongoose.connect(dbUrl);
+    await mongoose.connect(process.env.DB_URL);
+    console.log("MongoDB connected");
   } catch (error) {
-    console.log(error.message);
+    console.error(error.message);
     process.exit(1);
   }
 };

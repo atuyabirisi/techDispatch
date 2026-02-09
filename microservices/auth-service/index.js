@@ -15,7 +15,7 @@ app.use("/signin", signInHandler);
 
 app.use(error);
 
-const port = process.env.AUTH_SERVICE_PORT || 4001;
+const port = process.env.AUTH_SERVICE_PORT;
 
 connectDB();
 
