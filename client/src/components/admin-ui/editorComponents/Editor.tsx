@@ -27,6 +27,8 @@ export default function Editor() {
 
   const [content, setContent] = useState("");
 
+  const endPoint = import.meta.env.ARTICLE_MS_URL;
+
   const handleLexicalChange = (editorState: EditorState): void => {
     editorState.read(() => {
       const root = $getRoot();
@@ -51,7 +53,7 @@ export default function Editor() {
     data.set("content", content);
 
     axios
-      .post("http://localhost:3002/article", data)
+      .post(endPoint, data)
       .then((res) => console.log(res.data))
       .catch((error) => console.log(error));
   };
