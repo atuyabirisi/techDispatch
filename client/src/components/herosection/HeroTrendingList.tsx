@@ -8,8 +8,6 @@ import CardPlaceholder from "../placeholder/CardPlaceholder";
 export default function HeroTrendingList() {
   const { data, isLoading, error } = useData<Post[]>("/top_pick");
 
-  const fileUploadsPath = import.meta.env.VITE_UPLOADS_URL;
-
   return (
     <div>
       {isLoading && <CardPlaceholder />}
@@ -27,7 +25,7 @@ export default function HeroTrendingList() {
             }}
           >
             <img
-              src={`${fileUploadsPath}/${post.cover}`}
+              src={post.cover}
               className="card-img-top"
               alt="trending post cover"
               style={{ maxHeight: "200px", objectFit: "cover" }}

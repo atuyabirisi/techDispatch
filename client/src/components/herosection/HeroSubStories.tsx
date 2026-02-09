@@ -6,7 +6,6 @@ import CardPlaceholder from "../placeholder/CardPlaceholder";
 
 export default function HeroSubStories() {
   const { data, isLoading, error } = useData<Post[]>("/hero_docker");
-  const fileUploadsPath = import.meta.env.VITE_UPLOADS_URL;
 
   if (isLoading) {
     return (
@@ -35,7 +34,7 @@ export default function HeroSubStories() {
               onClick={() => localStorage.setItem("activeStoryId", story._id)}
             >
               <img
-                src={`${fileUploadsPath}/${story.cover}`}
+                src={story.cover}
                 alt="main story cover"
                 className="card-img-top"
                 style={{ maxHeight: "200px", objectFit: "cover" }}

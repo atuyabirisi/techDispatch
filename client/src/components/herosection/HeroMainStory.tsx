@@ -8,8 +8,6 @@ import CardPlaceholder from "../placeholder/CardPlaceholder";
 export default function HeroMainStory() {
   const { data, isLoading, error } = useData<Post | null>("/hero_main");
 
-  const fileUploadsPath = import.meta.env.VITE_UPLOADS_URL;
-
   if (isLoading) return <CardPlaceholder />;
   if (error) {
     return <p className="text-danger">Unable to load the main story.</p>;
@@ -20,7 +18,7 @@ export default function HeroMainStory() {
     <div className="card border-bottom-0">
       <Link to={`/article/${data._id}`}>
         <img
-          src={`${fileUploadsPath}/${data.cover}`}
+          src={data.cover}
           className="card-img-top"
           alt="today story cover"
           style={{ maxHeight: "200px", objectFit: "cover" }}
