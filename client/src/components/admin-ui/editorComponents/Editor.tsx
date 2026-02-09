@@ -27,7 +27,7 @@ export default function Editor() {
 
   const [content, setContent] = useState("");
 
-  const endPoint = import.meta.env.ARTICLE_MS_URL;
+  const endPoint = import.meta.env.VITE_ARTICLE_MS_URL;
 
   const handleLexicalChange = (editorState: EditorState): void => {
     editorState.read(() => {
