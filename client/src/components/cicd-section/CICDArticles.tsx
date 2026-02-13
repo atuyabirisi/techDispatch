@@ -7,7 +7,6 @@ import CardPlaceholder from "../placeholder/CardPlaceholder";
 
 export default function CICDArticles() {
   const { data, isLoading, error } = useData<Post[]>("/cicd");
-  const fileUploadsPath = import.meta.env.VITE_UPLOADS_URL;
 
   const articles = data?.slice(0, 4) ?? [];
   const placeholders = Array.from({ length: 4 });

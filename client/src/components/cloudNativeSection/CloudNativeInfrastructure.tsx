@@ -7,7 +7,6 @@ import { format } from "date-fns";
 
 export default function CloudNativeInfrastructure() {
   const { data, isLoading, error } = useData<Post[]>("/cloud_native");
-  const fileUploadsPath = import.meta.env.VITE_UPLOADS_URL;
 
   const articles = data?.slice(0, 4) ?? [];
   const placeholders = Array.from({ length: 4 });
