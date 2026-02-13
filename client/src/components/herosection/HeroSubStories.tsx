@@ -17,11 +17,21 @@ export default function HeroSubStories() {
   }
 
   if (error) {
-    return <h6 className="text-danger">Unable to load articles.</h6>;
+    return (
+      <div>
+        <CardPlaceholder />
+        <CardPlaceholder />
+      </div>
+    );
   }
 
   if (!data || data.length === 0) {
-    return <h6 className="text-muted">No articles available.</h6>;
+    return (
+      <div>
+        <CardPlaceholder />
+        <CardPlaceholder />
+      </div>
+    );
   }
 
   return (

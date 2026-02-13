@@ -10,7 +10,7 @@ export default function HeroMainStory() {
 
   if (isLoading) return <CardPlaceholder />;
   if (error) {
-    return <p className="text-danger">Unable to load the main story.</p>;
+    return <CardPlaceholder />;
   }
   if (!data) return <p className="text-danger">No post available.</p>;
 

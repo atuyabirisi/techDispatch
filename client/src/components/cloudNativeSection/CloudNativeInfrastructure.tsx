@@ -31,7 +31,7 @@ export default function CloudNativeInfrastructure() {
     return (
       <div className="py-2">
         <SectionHeader />
-        <h6 className="text-danger my-3">Ooops...something went wrong</h6>
+        <CardPlaceholder />
       </div>
     );
   }
@@ -53,7 +53,7 @@ export default function CloudNativeInfrastructure() {
           <div className="col-md-6 col-lg-3" key={article._id}>
             <div className="card mb-3 border-0">
               <img
-                src={`${fileUploadsPath}/${article.cover}`}
+                src={article.cover}
                 className="card-img-top"
                 alt="article image"
                 style={{ maxHeight: "200px", objectFit: "cover" }}

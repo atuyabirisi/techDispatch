@@ -72,11 +72,7 @@ export default function PostContent() {
       </div>
 
       <div className="mb-3 rounded-3 imageContainerStyle">
-        <img
-          src={`http://localhost:3000/uploads/${article.cover}`}
-          alt="article"
-          className="imageStyle"
-        />
+        <img src={article.cover} alt="article" className="imageStyle" />
       </div>
 
       <div className="px-lg-2 py-lg-2 lh-lg text-start contentStyle">

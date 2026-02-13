@@ -31,7 +31,7 @@ export default function CICDArticles() {
     return (
       <section className="py-6">
         <SectionHeader />
-        <h6 className="text-danger my-3">Ooops...something went wrong</h6>
+        <CardPlaceholder />
       </section>
     );
   }
@@ -52,13 +52,17 @@ export default function CICDArticles() {
         {articles.map((article) => (
           <div className="col-md-6 col-lg-3 mb-4" key={article._id}>
             <div className="card border-0 h-100">
-              <img
-                src={`${fileUploadsPath}/${article.cover}`}
-                alt="article image"
-                className="card-img-top"
-                style={{ maxHeight: "200px", objectFit: "cover" }}
-                onError={(e) => (e.currentTarget.src = "/fallback.jpg")}
-              />
+              {article.cover ? (
+                <img
+                  src={article.cover}
+                  alt="article image"
+                  className="card-img-top"
+                  style={{ maxHeight: "200px", objectFit: "cover" }}
+                  onError={(e) => (e.currentTarget.src = "/fallback.jpg")}
+                />
+              ) : (
+                <CardPlaceholder />
+              )}
               <div className="card-body bg-light">
                 <div className="d-flex justify-content-between border-bottom py-1 mb-2">
                   <h6 className="text-danger">{article.category}</h6>

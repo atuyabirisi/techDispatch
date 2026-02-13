@@ -13,7 +13,7 @@ export default function HeroTrendingList() {
       {isLoading && <CardPlaceholder />}
       {error && (
         <div>
-          <h6 className="text text-danger">Error loading posts</h6>
+          <CardPlaceholder />
         </div>
       )}
       {data?.map((post, index) => (
