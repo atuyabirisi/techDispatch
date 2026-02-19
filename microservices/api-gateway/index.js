@@ -9,6 +9,6 @@ app.use(cors());
 
 proxies(app);
 
-const port = process.env.PORT || process.env.ALTERNATIVE_PORT;
+const port = process.env.PORT;
 
 app.listen(port, () => logger.info(`API Gateway running on port ${port}`));

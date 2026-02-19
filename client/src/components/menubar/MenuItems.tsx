@@ -1,8 +1,8 @@
 const menuLinks = [
-  { href: "/", label: "HOME" },
-  { href: "/about-us", label: "ABOUT" },
-  { href: "/forum", label: "FORUM" },
-  { href: "/contact", label: "CONTACT" },
+  { href: "/", label: "Home" },
+  { href: "/about-us", label: "About Us" },
+  { href: "/forum", label: "Forum" },
+  { href: "/contact", label: "Contact" },
 ];
 
 export default function MenuItems() {
@@ -19,7 +19,7 @@ export default function MenuItems() {
               href={href}
               className="link-dark text-decoration-none"
             >
-              <h5 className="m-0">{label}</h5>
+              <h4 className="m-0">{label}</h4>
             </a>
           </div>
         ))}

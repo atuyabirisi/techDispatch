@@ -49,24 +49,24 @@ export default function PostContent() {
 
   return (
     <div>
-      <div className="w-50 mt-4 mx-auto text-center">
-        <h4>{article.tittle.toUpperCase()}</h4>
+      <div className="w-75 mt-4 mx-auto text-center">
+        <h4>{article.tittle}</h4>
       </div>
 
-      <div className="w-50 mx-auto my-3 my-lg-2 px-2 py-3 d-flex justify-content-between border-bottom border-top">
+      <div className="w-75 mx-auto my-3 my-lg-2 px-2 py-3 d-flex justify-content-between border-bottom border-top">
         <div className="d-flex flex-column align-items-start">
-          <small>
+          <div>
             Published on:{" "}
             <span className="text-danger">
               {format(article.createdAt, "d MMMM yyyy")}
             </span>
-          </small>
-          <small>
+          </div>
+          <div>
             Category:{" "}
             <Link to="#" className="link-danger text-decoration-none">
-              {article.category.toUpperCase()}
+              {article.category}
             </Link>
-          </small>
+          </div>
         </div>
         <PostReactionPanel />
       </div>
@@ -75,9 +75,7 @@ export default function PostContent() {
         <img src={article.cover} alt="article" className="imageStyle" />
       </div>
 
-      <div className="px-lg-2 py-lg-2 lh-lg text-start contentStyle">
-        {parse(article.content)}
-      </div>
+      <div className="contentStyle">{parse(article.content)}</div>
       <div className="bg-light mb-4 rounded contentStyle">
         <PostComments
           articleId={article._id}

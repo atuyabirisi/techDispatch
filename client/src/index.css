@@ -1,5 +1,6 @@
 * {
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-family: "Roboto", serif;
+  line-height: 2;
   overflow-x: hidden;
 }
 .subscribe {
@@ -27,8 +28,8 @@
 /*SINGLE POST STYLES*/
 .imageContainerStyle {
   max-height: 450px;
-  min-width: 75%;
-  max-width: 75%;
+  min-width: 85%;
+  max-width: 85%;
   margin: auto;
   overflow-y: hidden;
 }
@@ -40,8 +41,11 @@
 }
 
 .contentStyle {
-  font-size: 18px;
-  max-width: 75%;
+  font-family: "Roboto", serif;
+  text-align: justify;
+  line-height: 2;
+  font-size: 19px;
+  max-width: 85%;
   margin: auto;
 }
 
