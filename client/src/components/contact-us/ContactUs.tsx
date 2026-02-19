@@ -73,10 +73,10 @@ export default function ContactUs() {
             <div className="p-4 bg-light rounded shadow-sm h-100">
               <h5 className="fw-bold mb-4">Reach Us</h5>
               <p className="text-dark mb-2">
-                <strong>Email:</strong> hello@cloudcommunity.com
+                <strong>Email:</strong> info@techdispach.tech
               </p>
               <p className="text-dark mb-2">
-                <strong>Phone:</strong> +254 700 000 000
+                <strong>Phone:</strong> +254 798248825
               </p>
               <p className="text-dark mb-2">
                 <strong>Location:</strong> Nairobi, Kenya
