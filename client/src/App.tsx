@@ -7,6 +7,7 @@ import CloudNativePage from "./pages/CloudNativePage";
 import AdminDashboardPage from "./pages/AdminDashBoardPage";
 import { Toaster } from "react-hot-toast";
 import AboutUsPage from "./pages/AboutUsPage";
+import ContactUsPage from "./pages/ContactUsPage";
 
 export default function App() {
   return (
@@ -21,6 +22,7 @@ export default function App() {
         <Route path="/all/cicd" element={<ViewAllCiCdArticles />} />
         <Route path="/all/cloud_native" element={<CloudNativePage />} />
         <Route path="/about-us" element={<AboutUsPage />} />
+        <Route path="contact" element={<ContactUsPage />} />
       </Routes>
     </BrowserRouter>
   );
