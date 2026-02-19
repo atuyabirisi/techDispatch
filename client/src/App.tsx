@@ -6,6 +6,7 @@ import ScrollToTop from "./components/scroll-to-top/ScrollToTop";
 import CloudNativePage from "./pages/CloudNativePage";
 import AdminDashboardPage from "./pages/AdminDashBoardPage";
 import { Toaster } from "react-hot-toast";
+import AboutUsPage from "./pages/AboutUsPage";
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
         <Route path="/dashboard" element={<AdminDashboardPage />} />
         <Route path="/all/cicd" element={<ViewAllCiCdArticles />} />
         <Route path="/all/cloud_native" element={<CloudNativePage />} />
+        <Route path="/about-us" element={<AboutUsPage />} />
       </Routes>
     </BrowserRouter>
   );

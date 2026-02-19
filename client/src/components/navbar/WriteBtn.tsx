@@ -9,11 +9,8 @@ export default function WriteBtn() {
     <div>
       <SignUpModal />
       <SignInModal />
-      <button
-        className="btn btn-outline-danger fw-bold"
-        onClick={openLoginModal}
-      >
-        Write
+      <button className="btn btn-outline-dark px-4" onClick={openLoginModal}>
+        Login
       </button>
     </div>
   );
