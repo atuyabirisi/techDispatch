@@ -16,7 +16,8 @@ export default function SignIn() {
   const [showPass, setShowPass] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
-  const endPoint = import.meta.env.VITE_SIGNIN_ENDPOINT;
+  const baseUrl = import.meta.env.VITE_API_BASE_URL;
+  const endPoint = `${baseUrl}/auth/signin`;
 
   const {
     register,

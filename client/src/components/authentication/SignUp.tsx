@@ -14,7 +14,8 @@ export default function SignUp() {
   const [showPassword, setShowPassword] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
-  const endPoint = import.meta.env.VITE_SIGNUP_ENDPOINT;
+  const baseUrl = import.meta.env.VITE_API_BASE_URL;
+  const endPoint = `${baseUrl}/auth/signup`;
 
   const {
     register,
